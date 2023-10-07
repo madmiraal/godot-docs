@@ -181,6 +181,8 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`debug/gdscript/warnings/inference_on_variant<class_ProjectSettings_property_debug/gdscript/warnings/inference_on_variant>`                                                                           | ``2``                                                                                            |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`debug/gdscript/warnings/inferred_declaration<class_ProjectSettings_property_debug/gdscript/warnings/inferred_declaration>`                                                                           | ``0``                                                                                            |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`debug/gdscript/warnings/int_as_enum_without_cast<class_ProjectSettings_property_debug/gdscript/warnings/int_as_enum_without_cast>`                                                                   | ``1``                                                                                            |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`debug/gdscript/warnings/int_as_enum_without_match<class_ProjectSettings_property_debug/gdscript/warnings/int_as_enum_without_match>`                                                                 | ``1``                                                                                            |
@@ -1309,6 +1311,10 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`String<class_String>`                       | :ref:`rendering/gl_compatibility/driver.windows<class_ProjectSettings_property_rendering/gl_compatibility/driver.windows>`                                                                                 | ``"opengl3"``                                                                                    |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`rendering/gl_compatibility/fallback_to_angle<class_ProjectSettings_property_rendering/gl_compatibility/fallback_to_angle>`                                                                           | ``true``                                                                                         |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`Array<class_Array>`                         | :ref:`rendering/gl_compatibility/force_angle_on_devices<class_ProjectSettings_property_rendering/gl_compatibility/force_angle_on_devices>`                                                                 | ``[]``                                                                                           |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`rendering/gl_compatibility/item_buffer_size<class_ProjectSettings_property_rendering/gl_compatibility/item_buffer_size>`                                                                             | ``16384``                                                                                        |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`bool<class_bool>`                           | :ref:`rendering/gl_compatibility/nvidia_disable_threaded_optimization<class_ProjectSettings_property_rendering/gl_compatibility/nvidia_disable_threaded_optimization>`                                     | ``true``                                                                                         |
@@ -1519,7 +1525,15 @@ Properties
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`xr/openxr/environment_blend_mode<class_ProjectSettings_property_xr/openxr/environment_blend_mode>`                                                                                                   | ``"0"``                                                                                          |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`xr/openxr/extensions/eye_gaze_interaction<class_ProjectSettings_property_xr/openxr/extensions/eye_gaze_interaction>`                                                                                 | ``false``                                                                                        |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`xr/openxr/extensions/hand_tracking<class_ProjectSettings_property_xr/openxr/extensions/hand_tracking>`                                                                                               | ``true``                                                                                         |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`xr/openxr/form_factor<class_ProjectSettings_property_xr/openxr/form_factor>`                                                                                                                         | ``"0"``                                                                                          |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`bool<class_bool>`                           | :ref:`xr/openxr/foveation_dynamic<class_ProjectSettings_property_xr/openxr/foveation_dynamic>`                                                                                                             | ``false``                                                                                        |
+   +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
+   | :ref:`int<class_int>`                             | :ref:`xr/openxr/foveation_level<class_ProjectSettings_property_xr/openxr/foveation_level>`                                                                                                                 | ``"0"``                                                                                          |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
    | :ref:`int<class_int>`                             | :ref:`xr/openxr/reference_space<class_ProjectSettings_property_xr/openxr/reference_space>`                                                                                                                 | ``"1"``                                                                                          |
    +---------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+
@@ -2469,6 +2483,20 @@ When set to ``warn`` or ``error``, produces a warning or an error respectively w
 :ref:`int<class_int>` **debug/gdscript/warnings/inference_on_variant** = ``2``
 
 When set to ``warn`` or ``error``, produces a warning or an error respectively when a static inferred type uses a :ref:`Variant<class_Variant>` as initial value, which makes the static type to also be Variant.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_debug/gdscript/warnings/inferred_declaration:
+
+.. rst-class:: classref-property
+
+:ref:`int<class_int>` **debug/gdscript/warnings/inferred_declaration** = ``0``
+
+When set to ``warn`` or ``error``, produces a warning or an error respectively when a variable, constant, or parameter has an implicitly inferred static type.
+
+\ **Note:** This warning is recommended *in addition* to :ref:`debug/gdscript/warnings/untyped_declaration<class_ProjectSettings_property_debug/gdscript/warnings/untyped_declaration>` if you want to always specify the type explicitly. Having ``INFERRED_DECLARATION`` warning level higher than ``UNTYPED_DECLARATION`` warning level makes little sense and is not recommended.
 
 .. rst-class:: classref-item-separator
 
@@ -9636,6 +9664,32 @@ Windows override for :ref:`rendering/gl_compatibility/driver<class_ProjectSettin
 
 ----
 
+.. _class_ProjectSettings_property_rendering/gl_compatibility/fallback_to_angle:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **rendering/gl_compatibility/fallback_to_angle** = ``true``
+
+If ``true``, the compatibility renderer will fall back to ANGLE if native OpenGL is not supported or the device is listed in :ref:`rendering/gl_compatibility/force_angle_on_devices<class_ProjectSettings_property_rendering/gl_compatibility/force_angle_on_devices>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_rendering/gl_compatibility/force_angle_on_devices:
+
+.. rst-class:: classref-property
+
+:ref:`Array<class_Array>` **rendering/gl_compatibility/force_angle_on_devices** = ``[]``
+
+An :ref:`Array<class_Array>` of devices which should always use the ANGLE renderer.
+
+Each entry is a :ref:`Dictionary<class_Dictionary>` with the following keys: ``vendor`` and ``name``. ``name`` can be set to ``*`` to add all devices with the specified ``vendor``.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_ProjectSettings_property_rendering/gl_compatibility/item_buffer_size:
 
 .. rst-class:: classref-property
@@ -11019,6 +11073,30 @@ Specify how OpenXR should blend in the environment. This is specific to certain 
 
 ----
 
+.. _class_ProjectSettings_property_xr/openxr/extensions/eye_gaze_interaction:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **xr/openxr/extensions/eye_gaze_interaction** = ``false``
+
+Specify whether to enable eye tracking for this project. Depending on the platform, additional export configuration may be needed.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_xr/openxr/extensions/hand_tracking:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **xr/openxr/extensions/hand_tracking** = ``true``
+
+If true we enable the hand tracking extension if available.
+
+.. rst-class:: classref-item-separator
+
+----
+
 .. _class_ProjectSettings_property_xr/openxr/form_factor:
 
 .. rst-class:: classref-property
@@ -11026,6 +11104,30 @@ Specify how OpenXR should blend in the environment. This is specific to certain 
 :ref:`int<class_int>` **xr/openxr/form_factor** = ``"0"``
 
 Specify whether OpenXR should be configured for an HMD or a hand held device.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_xr/openxr/foveation_dynamic:
+
+.. rst-class:: classref-property
+
+:ref:`bool<class_bool>` **xr/openxr/foveation_dynamic** = ``false``
+
+If true and foveation is supported, will automatically adjust foveation level based on framerate up to the level set on :ref:`xr/openxr/foveation_level<class_ProjectSettings_property_xr/openxr/foveation_level>`.
+
+.. rst-class:: classref-item-separator
+
+----
+
+.. _class_ProjectSettings_property_xr/openxr/foveation_level:
+
+.. rst-class:: classref-property
+
+:ref:`int<class_int>` **xr/openxr/foveation_level** = ``"0"``
+
+Applied foveation level if supported: 0 = off, 1 = low, 2 = medium, 3 = high.
 
 .. rst-class:: classref-item-separator
 

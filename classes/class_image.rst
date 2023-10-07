@@ -21,7 +21,7 @@ Description
 
 Native image datatype. Contains image data which can be converted to an :ref:`ImageTexture<class_ImageTexture>` and provides commonly used *image processing* methods. The maximum width and height for an **Image** are :ref:`MAX_WIDTH<class_Image_constant_MAX_WIDTH>` and :ref:`MAX_HEIGHT<class_Image_constant_MAX_HEIGHT>`.
 
-An **Image** cannot be assigned to a ``texture`` property of an object directly (such as :ref:`Sprite2D<class_Sprite2D>`), and has to be converted manually to an :ref:`ImageTexture<class_ImageTexture>` first.
+An **Image** cannot be assigned to a texture property of an object directly (such as :ref:`Sprite2D.texture<class_Sprite2D_property_texture>`), and has to be converted manually to an :ref:`ImageTexture<class_ImageTexture>` first.
 
 \ **Note:** The maximum image size is 16384×16384 pixels due to graphics hardware limitations. Larger images may fail to import.
 
@@ -313,7 +313,7 @@ OpenGL texture format ``GL_RGBA32F`` where there are four components, each a 32-
 
 :ref:`Format<enum_Image_Format>` **FORMAT_RH** = ``12``
 
-OpenGL texture format ``GL_R32F`` where there's one component, a 16-bit "half-precision" floating-point value.
+OpenGL texture format ``GL_R16F`` where there's one component, a 16-bit "half-precision" floating-point value.
 
 .. _class_Image_constant_FORMAT_RGH:
 
@@ -321,7 +321,7 @@ OpenGL texture format ``GL_R32F`` where there's one component, a 16-bit "half-pr
 
 :ref:`Format<enum_Image_Format>` **FORMAT_RGH** = ``13``
 
-OpenGL texture format ``GL_RG32F`` where there are two components, each a 16-bit "half-precision" floating-point value.
+OpenGL texture format ``GL_RG16F`` where there are two components, each a 16-bit "half-precision" floating-point value.
 
 .. _class_Image_constant_FORMAT_RGBH:
 
@@ -329,7 +329,7 @@ OpenGL texture format ``GL_RG32F`` where there are two components, each a 16-bit
 
 :ref:`Format<enum_Image_Format>` **FORMAT_RGBH** = ``14``
 
-OpenGL texture format ``GL_RGB32F`` where there are three components, each a 16-bit "half-precision" floating-point value.
+OpenGL texture format ``GL_RGB16F`` where there are three components, each a 16-bit "half-precision" floating-point value.
 
 .. _class_Image_constant_FORMAT_RGBAH:
 
@@ -337,7 +337,7 @@ OpenGL texture format ``GL_RGB32F`` where there are three components, each a 16-
 
 :ref:`Format<enum_Image_Format>` **FORMAT_RGBAH** = ``15``
 
-OpenGL texture format ``GL_RGBA32F`` where there are four components, each a 16-bit "half-precision" floating-point value.
+OpenGL texture format ``GL_RGBA16F`` where there are four components, each a 16-bit "half-precision" floating-point value.
 
 .. _class_Image_constant_FORMAT_RGBE9995:
 
@@ -1224,7 +1224,7 @@ Returns the number of mipmap levels or 0 if the image has no mipmaps. The larges
 
 :ref:`int<class_int>` **get_mipmap_offset** **(** :ref:`int<class_int>` mipmap **)** |const|
 
-Returns the offset where the image's mipmap with index ``mipmap`` is stored in the ``data`` dictionary.
+Returns the offset where the image's mipmap with index ``mipmap`` is stored in the :ref:`data<class_Image_property_data>` dictionary.
 
 .. rst-class:: classref-item-separator
 
