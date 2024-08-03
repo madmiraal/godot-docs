@@ -829,7 +829,7 @@ Returns the value of the given environment variable, or an empty string if ``var
 
 Returns the file path to the current engine executable.
 
-\ **Note:** On macOS, always use :ref:`create_instance<class_OS_method_create_instance>` instead of relying on executable path.
+\ **Note:** On macOS, if you want to launch another instance of Godot, always use :ref:`create_instance<class_OS_method_create_instance>` instead of relying on the executable path.
 
 .. rst-class:: classref-item-separator
 
@@ -1056,6 +1056,8 @@ Returns the name of the host platform.
 Returns the exit code of a spawned process once it has finished running (see :ref:`is_process_running<class_OS_method_is_process_running>`).
 
 Returns ``-1`` if the ``pid`` is not a PID of a spawned child process, the process is still running, or the method is not implemented for the current platform.
+
+\ **Note:** Returns ``-1`` if the ``pid`` is a macOS bundled app process.
 
 \ **Note:** This method is implemented on Android, Linux, macOS and Windows.
 
